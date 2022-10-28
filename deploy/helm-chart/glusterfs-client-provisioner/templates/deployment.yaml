@@ -69,9 +69,11 @@ spec:
         - name: glusterfs-client-root
 {{- if .Values.buildMode }}
           emptyDir: {}
-{{- else if .Values.glusterfs.mountOptions }}
-          persistentVolumeClaim:
-            claimName: pvc-{{ template "glusterfs-client-provisioner.fullname" . }}
+# unsure why this was breaking on my setup
+# maybe replicaCount > 1 (default) lets the outgoing pod provision the incoming pods?
+# {{- else if .Values.glusterfs.mountOptions }}
+#           persistentVolumeClaim:
+#             claimName: pvc-{{ template "glusterfs-client-provisioner.fullname" . }}
 {{- else }}
           glusterfs:
             endpoints: {{ template "glusterfs-client-provisioner.endpointsName" . }}
