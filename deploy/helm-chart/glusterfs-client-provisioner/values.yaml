@@ -6,7 +6,7 @@ replicaCount: 1
 strategyType: Recreate
 
 image:
-  repository: olliai/glusterfs-client-provisioner
+  repository: td512/glusterfs-client-provisioner
   tag: # same as chart version
   pullPolicy: IfNotPresent
 
